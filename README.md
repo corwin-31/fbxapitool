@@ -1,46 +1,41 @@
-freepybox
+fbxapitool
 ==========
 
-Easily manage your freebox in Python using the Freebox OS API.
-Check your calls, manage your contacts, configure your dhcp, disable your wifi, monitor your LAN activity and many others, on LAN or remotely.
+Warning : this package deals with documented API functions, where some are unstables meaning these can change in the future ; moreover some others are not documented (OpenVPN Client & VM management), then they are more unstables
 
-freepybox is a python library implementing the freebox OS API. It handles the authentication process and provides a row access to the freebox API.
+This package is an evolution of "freepybox", available here : https://github.com/fstercq/freepybox. In addition of many modifications, it brings new functions to missing API calls. But the Freebox API is not fully covered. Some features has not been tested, as they refers to options that I've not subscribed. It was developed with Python 3 with Delta S box, and tested under Linux (Debian & Ubuntu). I think it can be used under macOS, not yet tested on my side. I've no idea of the effort required to used it on Windows 10, and I'll not do it. Last but not least, it'll only work with last version of the API in end of 2020, which mean version 8.
 
 Install
 -------
-Use the PIP package manager
-```bash
-$ pip install freepybox
-```
 
-Or manually download and install the last version from github
+Manually download and install the last version from github
 ```bash
-$ git clone https://github.com/fstercq/freepybox.git
+$ git clone https://github.com/corwin-31/fbxapitool.git
 $ python setup.py install
 ```
 
 Get started
 -----------
 ```python
-# Import the freepybox package.
-from freepybox import Freepybox
+# Import fbxapitool package
+from fbxapitool import Freebox
 
-# Instantiate the Freepybox class using default options.
-fbx = Freepybox()
+# Instantiate the Freebox class
+# Be ready to authorize the app on the box
+fbx = Freebox()
 
-# Connect to the freebox with default options. 
-# Be ready to authorize the application on the Freebox.
-fbx.open('192.168.0.254')
+# Connect, open a session to the freebox
+fbx.open('mafreebox.freebox.fr',443)
 
-# Do something usefull, rebooting your freebox for example.
+# Do something usefull, rebooting the box for example
 fbx.system.reboot()
 
-# Properly close the session.
+# Close the session.
 fbx.close()
 ```
-Have a look on the [example.py] (https://github.com/fstercq/freepybox/blob/master/example.py) for a more complete overview.
+Have a look on the [fbx-status.py] (https://github.com/corwin-31/fbxapitool/blob/master/fbx-status.py) for a more complete overview
 
 Resources
 ---------
-Freebox OS API documentation : http://dev.freebox.fr/sdk/os/
+Freebox OS API documentation : http://dev.freebox.fr/sdk/os/ or http://mafreebox.freebox.fr/doc/index.html#
 
