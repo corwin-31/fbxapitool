@@ -55,7 +55,7 @@ class Fs:
         '''
         return [i["name"] for i in self.list_files(self._path)]
 
-    def mkdir(self, create_directory=create_directory_schema):
+    def mkdir(self, create_directory=mkdir_schema):
         '''
         Creates directory
         '''
